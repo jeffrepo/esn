@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="esn_action_hr_expense_confirm" model="ir.actions.server">
+        <field name="name">Confirmar gastos</field>
+        <field name="model_id" ref="hr_expense.model_hr_expense_sheet"/>
+        <field name="binding_model_id" ref="hr_expense.model_hr_expense_sheet"/>
+        <field name="state">code</field>
+        <field name="code">
+if records:
+    for record in records:
+        record.action_sheet_move_create()
+        </field>
+    </record>
+
+</odoo>
