@@ -14,7 +14,7 @@
     'category': 'Uncategorized',
     'version': '0.1',
 
-    'depends': ['stock','sale_stock','hr_expense'],
+    'depends': ['stock','sale_stock','hr_expense','account'],
 
     'data': [
         'views/hr_expense_views.xml',
