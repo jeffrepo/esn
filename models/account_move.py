@@ -14,7 +14,7 @@ class AccountMove(models.Model):
         return True
         
     def _post_reconcile_invoice_payment(self):
-        invoice_ids = self.env["account.move"].sudo().search([("move_type","=","out_invoice"),("state","=","draft"),("company_id","=",1),("invoice_date","!=",False)])
+        invoice_ids = self.env["account.move"].sudo().search([("move_type","=","out_invoice"),("state","=","draft"),("company_id","=",1)])
         if invoice_ids:
             for invoice in invoice_ids:
                 payment_id = self.env["account.payment"].sudo().search([("partner_id","=", invoice.partner_id.id),("state","=","posted"),("ref","=", invoice.invoice_origin), ("company_id","=",1)])
