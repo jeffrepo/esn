@@ -17,6 +17,8 @@ class AccountMove(models.Model):
         invoice_ids = self.env["account.move"].sudo().search([("move_type","=","out_invoice"),("state","=","draft"),("company_id","=",1)])
         if invoice_ids:
             for invoice in invoice_ids:
+                invoice.write({"invoice_date": invoice.line_ids[0].sale_line_ids.order_id.date_order.date()})
+                invoice.action_post()
                 payment_id = self.env["account.payment"].sudo().search([("partner_id","=", invoice.partner_id.id),("state","=","posted"),("ref","=", invoice.invoice_origin), ("company_id","=",1)])
                 if payment_id:
                     for pl in payment_id.move_id.line_ids.filtered(lambda r: r.account_id.account_type == 'asset_receivable' and not r.reconciled):
