@@ -6,5 +6,4 @@ class StockPicking(models.Model):
 
     team_id = fields.Many2one('crm.team',
         string="Equipo de ventas",
-        related='sale_id.team_id',
         store=True, readonly=False)
