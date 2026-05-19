@@ -17,6 +17,6 @@
     'depends': ['stock','sale_stock','hr_expense','account'],
 
     'data': [
-        'views/hr_expense_views.xml',
+        #'views/hr_expense_views.xml',
     ],   
 }
